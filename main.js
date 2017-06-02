@@ -52,29 +52,41 @@ $('.arrow-prev').click(function() {
   }
   else if(event.which === 110) {
     var currentArticle = $('.current');
-    var nextArticle = currentArticle.next();
+    var nextArticle = currentArticle.next();  
+
     var currentDot = $('.active-dot');
     var nextDot = currentDot.next();
-     nextDot = $('.article').next();
-     nextDot = $('.dot').first();
-  currentArticle.removeClass('current');
-  nextArticle.addClass('current');
+     
+   if(nextArticle.length == 0){
+        nextArticle = $('.article').first();
+        nextDot = $('.dot').first();
+        }
 
-  currentDot.removeClass('active-dot');
+    currentArticle.removeClass('current');
+     nextArticle.addClass('current');
+
+    currentDot.removeClass('active-dot');
     nextDot.addClass('active-dot');
   
 }
   else if(event.which === 98) {
     var currentArticle = $('.current');
     var prevArticle = currentArticle.prev();
+
     var currentDot = $('.active-dot');
     var prevDot = currentDot.prev();
-     prevDot = $('.article').prev();
-     prevDot = $('.dot').last();
-  currentArticle.removeClass('current');
-  prevArticle.addClass('current');
+     
 
-    currentDot.removeClass('active-dot');
+    if(prevArticle.length == 0){
+        prevArticle = $('.article').last();
+        prevDot = $('.dot').last();
+    }
+
+
+     currentArticle.removeClass('current');
+    prevArticle.addClass('current');
+
+   currentDot.removeClass('active-dot');
     prevDot.addClass('active-dot');
   
 }
