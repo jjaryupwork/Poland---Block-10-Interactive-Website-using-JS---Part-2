@@ -48,7 +48,7 @@ $('.arrow-prev').click(function() {
 
    $(document).keypress(function(event) {
      if(event.which === 111) {
-    $('.current').children('.description').toggle();
+    $('.current').children('h3').toggle();
   }
   else if(event.which === 110) {
     var currentArticle = $('.current');
@@ -96,3 +96,10 @@ $('.arrow-prev').click(function() {
 $(document).ready(main);
 
 
+
+
+currentArticle.change().removeClass('current');
+nextArticle.change().addClass('current');
+    
+currentDot.removeClass('active-dot');
+nextDot.addClass('active-dot');

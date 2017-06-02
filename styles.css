@@ -1,3 +1,15 @@
+@font-face {
+    font-family:Bangers-Regular;
+    src: url('./Bangers/Bangers-Regular.ttf');
+}
+@font-face {
+    font-family:CormorantSC-Medium;
+    src: url('./CormorantSC/CormorantSC-Medium.ttf');
+}
+@font-face {
+   font-family:Roboto-Regular;
+   src: url('./Roboto/Roboto-Regular.ttf');
+}
 body{
   background-color: #FFFFFF;
 }
@@ -6,16 +18,18 @@ p {
 }
 .logo{
   text-align:center;
-  font-family: 'Bangers';
+  font-family: 'Bangers-Regular';
   font-size: 60px;
 }
-div.legenda{
+ul{
   text-align: center;
   border: 2px solid red;
   max-width: 300px;
   margin: 0 auto;
-  font-family: 'Cormorant SC', sans-serif;
-
+  font-family: 'CormorantSC-Medium', sans-serif;
+}
+ul li{
+  list-style: none;
 }
 .row {
   margin: 0;
@@ -30,51 +44,51 @@ div.legenda{
   background: rgba(117, 134, 137, 0.95);
   border-spacing: 2px;
   border-color: gray;
-  font-family: sans-serif;
+  font-family:'Roboto-Regular';
   border-bottom: 1px #e5e5e5 solid;
   border-radius: 20px;
 }
 
-.current .item {
+.current h2 {
   background: red;
   border-radius: 20px;
   color: white;
   font-style: bold;
 }
 
-.item {
+h2 {
   cursor: pointer;
   padding-top: 7px;
   padding-bottom: 7px;
   
 }
 
-.item .news {
+h2 .news {
   margin-left: 20px;
   font-weight: bold;
 }
 
-.item .title {
+h2 .title {
   margin-left: 20px;
 }
 
-.item .date {
+h2 .date {
   margin-right: 20px;
 }
 
-.item .date {
+h2 .date {
   text-align: right;  
 }
 
-.description {
-  font-family: 'Cambo';
+h3 {
+  font-family: 'Roboto-Regular';
   display: none;
   padding-top: 10px;
   padding-bottom: 10px;
   letter-spacing: 2px;
 }
 
-.description h1 {
+h3 h1 {
   font-family: arial,sans-serif;
   margin-top: 0px;
   font-size: 20px;
@@ -83,7 +97,7 @@ p.title {
   margin-left: 20px;
 }
 
-.description.row{
+h3.row{
   background: white;
   border: 2px solid red;
   border-radius: 20px;
@@ -91,7 +105,7 @@ p.title {
 
 }
 
-div.item.row:hover{
+div h2.row:hover{
   background: gold;
   color: black;
   border-radius: 20px;
@@ -132,4 +146,8 @@ div.item.row:hover{
 
 .slider-dots li.active-dot {
   color: red;
+}
+button{
+  background: none;
+  border:none;
 }
