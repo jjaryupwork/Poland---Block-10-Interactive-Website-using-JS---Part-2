@@ -1,45 +1,71 @@
 var main = function() {
     $('.article').click(function() { 
     $('.article').removeClass('current');  
-    $('.description').hide();
-    var currentDot = $('.active-dot');
+    $('h3').hide();
+    
 
     $(this).addClass('current');
-    $(this).children('.description').show();
+    $(this).children('h3').show();
   });
-  
-$('.arrow-next').click(function(){
     var currentArticle = $('.current');
-    var nextArticle =currentArticle.next();
-    
-    var currentDot = $('.active-dot');
+     var nextArticle =currentArticle.next();
+     var currentDot = $('.active-dot');
     var nextDot = currentDot.next();
+    var currentArticle = $('.current');
+    var prevArticle =currentArticle.prev();
+    var currentDot = $('.active-dot');
+    var prevDot = currentDot.prev();
     
+var zzz = function(){
+  /*var*/ currentArticle //= $('.current');
+     /*var*/ nextArticle// =currentArticle.next();
+    /* var*/ currentDot//= $('.active-dot');
+    /*var*/ nextDot //= currentDot.next();
+   
+};
+
+var yyy = function(){
+    /* var*/ currentArticle// = $('.current');
+    /*var */prevArticle// =currentArticle.prev();
+    /*var*/ currentDot// = $('.active-dot');
+   /* var*/ prevDot //= currentDot.prev();
+   
+};
+
+
+  
+$('.arrow-next').click(function(zzz){  
+   // zzz(); 
+   var currentArticle = $('.current');
+     var nextArticle =currentArticle.next();
+     var currentDot = $('.active-dot');
+    var nextDot = currentDot.next();
     if(nextArticle.length == 0){
         nextArticle = $('.article').first();
         nextDot = $('.dot').first();
         }
+  currentArticle.removeClass('current');
+  nextArticle.addClass('current');
     
-   currentArticle.change().removeClass('current');
-    nextArticle.change().addClass('current');
-    
-    currentDot.removeClass('active-dot');
-    nextDot.addClass('active-dot');
+  currentDot.removeClass('active-dot');
+  nextDot.addClass('active-dot');
+        
+   
+   
 });
-$('.arrow-prev').click(function() {
-    var currentArticle = $('.current');
+$('.arrow-prev').click(function(yyy) {
+   //yyy();
+     var currentArticle = $('.current');
     var prevArticle =currentArticle.prev();
-    
     var currentDot = $('.active-dot');
     var prevDot = currentDot.prev();
-    
     if(prevArticle.length == 0){
         prevArticle = $('.article').last();
         prevDot = $('.dot').last();
     }
 
-   currentArticle.change().removeClass('current');
-    prevArticle.change().addClass('current');
+   currentArticle.removeClass('current');
+    prevArticle.addClass('current');
     
     currentDot.removeClass('active-dot');
     prevDot.addClass('active-dot');
@@ -51,6 +77,7 @@ $('.arrow-prev').click(function() {
     $('.current').children('h3').toggle();
   }
   else if(event.which === 110) {
+   //zzz(); 
     var currentArticle = $('.current');
     var nextArticle = currentArticle.next();  
 
@@ -70,6 +97,7 @@ $('.arrow-prev').click(function() {
   
 }
   else if(event.which === 98) {
+  // yyy(); 
     var currentArticle = $('.current');
     var prevArticle = currentArticle.prev();
 
@@ -96,10 +124,3 @@ $('.arrow-prev').click(function() {
 $(document).ready(main);
 
 
-
-
-currentArticle.change().removeClass('current');
-nextArticle.change().addClass('current');
-    
-currentDot.removeClass('active-dot');
-nextDot.addClass('active-dot');
