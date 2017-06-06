@@ -22,13 +22,14 @@ p {
   font-size: 60px;
 }
 ul{
-  text-align: center;
+  padding-left: 0;
   border: 2px solid red;
   max-width: 300px;
   margin: 0 auto;
   font-family: 'CormorantSC-Medium', sans-serif;
 }
 ul li{
+  text-align: center;
   list-style: none;
 }
 .article {
