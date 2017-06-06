@@ -1,21 +1,21 @@
 var main = function() {
     $('.article').click(function() { 
     $('.article').removeClass('current');  
-    $('h3').hide();
+    $('.ppp').hide();
     
 
     $(this).addClass('current');
-    $(this).children('h3').show();
+    $(this)('.ppp').show();
   });
-    var currentArticle = $('.current');
-     var nextArticle =currentArticle.next();
+    /* var nextArticle =currentArticle.next();
      var currentDot = $('.active-dot');
     var nextDot = currentDot.next();
     var currentArticle = $('.current');
     var prevArticle =currentArticle.prev();
     var currentDot = $('.active-dot');
     var prevDot = currentDot.prev();
-    
+     var currentArticle = $('.current');*/
+   
 var zzz = function(){
   /*var*/ currentArticle //= $('.current');
      /*var*/ nextArticle// =currentArticle.next();
@@ -34,7 +34,7 @@ var yyy = function(){
 
 
   
-$('.arrow-next').click(function(zzz){  
+$('.arrow-next').click(function(){  
    // zzz(); 
    var currentArticle = $('.current');
      var nextArticle =currentArticle.next();
@@ -53,7 +53,7 @@ $('.arrow-next').click(function(zzz){
    
    
 });
-$('.arrow-prev').click(function(yyy) {
+$('.arrow-prev').click(function() {
    //yyy();
      var currentArticle = $('.current');
     var prevArticle =currentArticle.prev();
@@ -74,7 +74,7 @@ $('.arrow-prev').click(function(yyy) {
 
    $(document).keypress(function(event) {
      if(event.which === 111) {
-    $('.current').children('h3').toggle();
+    $('.current').children('.ppp').toggle();
   }
   else if(event.which === 110) {
    //zzz(); 
