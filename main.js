@@ -25,7 +25,7 @@ var main = function() {
     $('.article').removeClass('current');  
     $('.ppp').hide();
     $(this).addClass('current');
-    $(this)('.ppp').show();
+    $(this).children('.ppp').show();
   });
 $('.arrow-next').click(function(){  
      currentArticle = $('.current');
