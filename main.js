@@ -1,50 +1,90 @@
-
-var checkbox = function(){
- if ('geolocation' in navigator) {
-     setInterval(getWeather, 100000);
-     getWeather();
-  }
-  else
-  {
-    alert('msg');
-    $('.error >p').text('Sorry u dont allow to get Weather');
-  }
-}
+var currentArticle;
+var prevArticle; 
+var currentDot; 
+var prevDot; 
+var nextArticle;
+var nextDot;
 
 
-    var getWeather = function() {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      loadWeather(position.coords.latitude + ',' + position.coords.longitude);
-    });
-  } 
+
+  
+var switchCssClasses = function(prevElement, nextElement, ClassName) {
+  prevElement = prevElement.removeClass(ClassName);
+  nextElement = nextElement.addClass(ClassName);
+} 
  
-function loadWeather(location, woeid) {
-  $.simpleWeather({
-    location: location,
-    woeid: woeid,
-    unit: 'c',
-    success: function (weather) {
-      city = weather.city;
-      temp = weather.temp + '&deg;';
-      wcode = '<img class="weathericon" src="images/' + weather.code + '.svg">';
-      wind = '<p>' + weather.wind.speed + '</p><p>' + weather.units.speed + '</p>';
-      humidity = weather.humidity + '%';
-      $(".location").text(city);
-      $(".temperature").html(temp);
-      $(".climate_bg").html(wcode);
-      $(".windspeed").html(wind);
-      $(".humidity").text(humidity);
-    },
-	 error: function(error) {
-   $(".error").html('<p>' + error + '</p>');
-    }
+
+
+var main = function() {
+    $('.article').click(function() { 
+    $('.article').removeClass('current');  
+    $('.ppp').hide();
+    $(this).addClass('current');
+    $(this).children('.ppp').show();
   });
-}
+$('.arrow-next').click(function(){  
+     currentArticle = $('.current');
+     nextArticle =currentArticle.next();
+     currentDot = $('.activedot');
+     nextDot = currentDot.next();
+    if(nextArticle.length == 0){
+      nextArticle = $('.article').first();
+      nextDot = $('.dot').first();
+        }
 
-$(document).ready(function (checkbox) {
- 
+    switchCssClasses( currentArticle, nextArticle,  'current' );
+    switchCssClasses( currentDot, nextDot,  'activedot' );
+
 });
+$('.arrow-prev').click(function() {
+     currentArticle = $('.current');
+     prevArticle =currentArticle.prev();
+     currentDot = $('.activedot');
+     prevDot = currentDot.prev();
+    if(prevArticle.length == 0){
+      prevArticle = $('.article').last();
+      prevDot = $('.dot').last();
+    }
+    switchCssClasses( currentArticle, prevArticle,  'current' );
+    switchCssClasses( currentDot, prevDot,  'activedot' );
+
+   
+  });
+   $(document).keypress(function(event) {
+     if(event.which === 111) {
+    $('.current').children('.ppp').toggle();
+  }
+  else if(event.which === 110) {
+     currentArticle = $('.current');
+     nextArticle = currentArticle.next();  
+     currentDot = $('.activedot');
+     nextDot = currentDot.next();
+   if(nextArticle.length == 0){
+     nextArticle = $('.article').first();
+     nextDot = $('.dot').first();
+        }
+   switchCssClasses( currentArticle, nextArticle,  'current' );
+    switchCssClasses( currentDot, nextDot,  'activedot' );  
+}
+  else if(event.which === 98) {
+     currentArticle = $('.current');
+     prevArticle = currentArticle.prev();
+     currentDot = $('.activedot');
+     prevDot = currentDot.prev();
+    if(prevArticle.length == 0){
+      prevArticle = $('.article').last();
+      prevDot = $('.dot').last();
+    }
+     switchCssClasses( currentArticle, prevArticle,  'current' );
+    switchCssClasses( currentDot, prevDot,  'activedot' );
+    
+}
+});
+}
+$(document).ready(main);
 
 
 
 
+
+  
