@@ -15,7 +15,7 @@ var main = function() {
     $(this).addClass('current');
     $(this).children('.ppp').show();
   });
-$('.arrow-next').click(function(){  
+$('.rrow').click(function(){  
      currentArticle = $('.current');
      nextArticle =currentArticle.next();
      currentDot = $('.activedot');
@@ -27,9 +27,9 @@ $('.arrow-next').click(function(){
     switchCssClasses( currentArticle, nextArticle,  'current' );
     switchCssClasses( currentDot, nextDot,  'activedot' );
 });
-$('.arrow-prev').click(function() {
-     currentArticle = $('.current');
-     prevArticle =currentArticle.prev();
+$('.llow').click(function() {
+     currentArticle = ('.current');
+     prevArticle = currentArticle.prev();
      currentDot = $('.activedot');
      prevDot = currentDot.prev();
     if(prevArticle.length == 0){
