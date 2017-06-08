@@ -15,7 +15,7 @@ var main = function() {
     $(this).addClass('current');
     $(this).children('.ppp').show();
   });
-$('.rrow').click(function(){  
+$('#rrow').click(function(){  
      currentArticle = $('.current');
      nextArticle =currentArticle.next();
      currentDot = $('.activedot');
@@ -27,8 +27,8 @@ $('.rrow').click(function(){
     switchCssClasses( currentArticle, nextArticle,  'current' );
     switchCssClasses( currentDot, nextDot,  'activedot' );
 });
-$('.llow').click(function() {
-     currentArticle = ('.current');
+$('#llow').click(function() {
+     currentArticle = $('.current');
      prevArticle = currentArticle.prev();
      currentDot = $('.activedot');
      prevDot = currentDot.prev();
