@@ -1,33 +1,27 @@
-var currentArticle;
-var prevArticle; 
-var currentDot; 
-var prevDot; 
-var nextArticle;
-var nextDot;
-var switchCssClasses = function(prevElement, nextElement, ClassName) {
-  prevElement = prevElement.removeClass(ClassName);
-  nextElement = nextElement.addClass(ClassName);
-} 
-var main = function() {
-    $('.article').click(function() { 
-    $('.article').removeClass('current');  
-    $('.ppp').hide();
-    $(this).addClass('current');
-    $(this).children('.ppp').show();
-  });
-$('#rrow').click(function(){  
+var currentArticle = $('.current');
+var prevArticle = currentArticle.prev();
+var currentDot = $('.current');
+var prevDot = currentDot.prev();
+var nextArticle =currentArticle.next();
+var nextDot = currentDot.next();
+var letterOCode = 111;
+var letterNCode = 110;
+var letterBCode = 98;
+
+var nextEventHandler = function(){
      currentArticle = $('.current');
      nextArticle =currentArticle.next();
      currentDot = $('.activedot');
      nextDot = currentDot.next();
-    if(nextArticle.length == 0){
+      if(nextArticle.length == 0){
       nextArticle = $('.article').first();
       nextDot = $('.dot').first();
       }
     switchCssClasses( currentArticle, nextArticle,  'current' );
     switchCssClasses( currentDot, nextDot,  'activedot' );
-});
-$('#llow').click(function() {
+      };
+
+var prevEventHandler = function(){
      currentArticle = $('.current');
      prevArticle = currentArticle.prev();
      currentDot = $('.activedot');
@@ -38,39 +32,48 @@ $('#llow').click(function() {
       }
     switchCssClasses( currentArticle, prevArticle,  'current' );
     switchCssClasses( currentDot, prevDot,  'activedot' );
-  });
-   $(document).keypress(function(event) {
-     if(event.which === 111) {
-    $('.current').children('.ppp').toggle();
       }
-  else if(event.which === 110) {
-     currentArticle = $('.current');
-     nextArticle = currentArticle.next();  
-     currentDot = $('.activedot');
-     nextDot = currentDot.next();
-   if(nextArticle.length == 0){
-     nextArticle = $('.article').first();
-     nextDot = $('.dot').first();
-      }
-   switchCssClasses( currentArticle, nextArticle,  'current' );
-    switchCssClasses( currentDot, nextDot,  'activedot' );  
-      }
-  else if(event.which === 98) {
-     currentArticle = $('.current');
-     prevArticle = currentArticle.prev();
-     currentDot = $('.activedot');
-     prevDot = currentDot.prev();
-    if(prevArticle.length == 0){
-      prevArticle = $('.article').last();
-      prevDot = $('.dot').last();
+
+var openArticleHandler = function(){
+     if(event.which === letterOCode) {
+     $('.current').children('.description').toggle();
        }
-     switchCssClasses( currentArticle, prevArticle,  'current' );
-    switchCssClasses( currentDot, prevDot,  'activedot' );
+     else if(event.which === letterNCode) {
+     nextEventHandler()
       }
+
+     else if(event.which === letterBCode) {
+     prevEventHandler()
+      }
+     }
+
+var switchCssClasses = function(prevElement, nextElement, ClassName) {
+  prevElement = prevElement.removeClass(ClassName);
+  nextElement = nextElement.addClass(ClassName);
+   } 
+
+var main = function() {
+    $('.article').click(function() { 
+    $('.article').removeClass('current');  
+    $('.description').hide();
+    $(this).addClass('current');
+    $(this).children('.description').show();
+    });
+
+$('#rightarrow').click(function(){  
+     nextEventHandler()
+  });
+
+$('#leftarrow').click(function() {
+     prevEventHandler()
+  });
+  
+$(document).keypress(function(event) {
+  openArticleHandler()
 });
 }
-$(document).ready(main);
 
+$(document).ready(main);
 
 
 
